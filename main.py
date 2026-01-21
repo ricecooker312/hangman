@@ -1,6 +1,7 @@
 import os
 
 word = input("Make a string for hangman: ")
+
 guessed = False
 
 guessed_word = []
@@ -15,8 +16,12 @@ print("Good luck!")
 print() 
 
 for letter in word:
-    guessed_word.append("_")
-    print("_", end=" ")
+    if letter == " ":
+        print("   ", end="")
+        guessed_word.append(" ")
+    else:
+        print("_", end=" ")
+        guessed_word.append("_")
 
 incorrect_guesses = 0
 guesses = []
@@ -26,7 +31,7 @@ print()
 while not guessed:
     guess = input("Make a guess for a letter in the word: ")
 
-    if len(guess) != 1:
+    if len(guess) != 1 or not guess.isalpha():
         print("Please enter one single letter", end="\n")
         continue
     
