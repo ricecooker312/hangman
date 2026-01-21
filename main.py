@@ -1,3 +1,18 @@
+"""
+Hangman Game
+
+1. User enters a word for another player
+2. Word is stored as "_" in guessed_word[]
+3. guessed_word[] is typed out ("_" or actual letters if they are guessed)
+4. User makes a guess, and validity check on letter takes place
+5. If guess is in the letter (case insensitive), underscores in guessed_list[] are replaed by letters
+6. If guess is not in the letter, add to incorrect guesses and continue
+7. Check to see if there are still any "_" in guessed_word[]
+    a. If there is, continue with the loop
+    b. If there isn't, break out of the loop and say you won the challenge
+"""
+
+
 import os
 
 word = input("Make a string for hangman: ")
@@ -6,6 +21,7 @@ guessed = False
 
 guessed_word = []
 
+# Clear terminal after inputting word to guess
 os.system('cls' if os.name == 'nt' else 'clear')
 
 print("-----------------HANGMAN-----------------")
@@ -16,7 +32,7 @@ print("Good luck!")
 print() 
 
 for letter in word:
-    if letter == " ":
+    if letter == " ": # Don't write spaces as underscores
         print("   ", end="")
         guessed_word.append(" ")
     else:
